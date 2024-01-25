@@ -194,19 +194,8 @@ def train_model(args):
         epoch_ave_val_loss=val_running_loss/(ind+1)
         epoch_ave_val_acc=val_running_acc/(ind+1)
 
-        # val_conf_matrix=val_conf_matrix.astype(int)
-        # val_acc_per_class_dict={}
-        # for i in range(num_classes):
-        #     class_name=class_mapping[i]
-        #     class_acc=val_conf_matrix[i][i]/val_conf_matrix[i].sum()*100
-        #     val_acc_per_class_dict[class_name]=class_acc    
-        # output_per_class_acc_string = ', '.join([f'Acc-{class_name}: {round(acc,2)}%' for class_name, acc in val_acc_per_class_dict.items()])
-
         print()
         print(f'Epoch {epoch}, Training loss: {epoch_ave_train_loss:.4f}, Training acc: {epoch_ave_train_acc:.4f}, Validation loss: {epoch_ave_val_loss:.4f}, Validation acc: {epoch_ave_val_acc:.4f}')
-        # print(f'Validation {output_per_class_acc_string}')
-        # print(f'Validation confusion matrix:\n{val_conf_matrix}')
-        # print()
 
         #save values to df
         output_df.loc[epoch,'epoch']=epoch
@@ -220,14 +209,6 @@ def train_model(args):
         
         output_df.to_csv(output_df_path,index=False)
         lrs_df.to_csv(lrs_path,index=False)
-
-
-        # # TENSORBOARD - plot graphs
-        # writer.add_scalar('train/training_loss',epoch_ave_train_loss,epoch)
-        # writer.add_scalar('val/validation_loss',epoch_ave_val_loss,epoch)
-        # writer.add_scalar('train/training_acc',epoch_ave_train_acc,epoch)
-        # writer.add_scalar('val/validation_acc',epoch_ave_val_acc,epoch)
-        # writer.add_scalar('learning_rate_scheduler',scheduler.get_lr()[0],epoch)
 
         # Save the model if the current validation loss is the best so far - this will only save the model not overwrite previous
         # print('ADD IN CODE SNIPPET TO SAVE ONLY 5 BEST MODELS VAL LOSS')
