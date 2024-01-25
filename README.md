@@ -3,9 +3,22 @@ Model development part of interview project
 download the dataset from https://www.kaggle.com/datasets/atulanandjha/lfwpeople
 
 
-How to train the model?
-1. clone repo
-2. fe
+How to train / finetune the model and deploy in app?
+app: https://github.com/haidiazaman/face-data-matching-app/tree/main
+
+1. clone repo.
+2. create dataset folder and add your images.
+3. preprocess your data (run MTCNN face detector to get all the bounding boxes and prepare csv. follow format in lfw_dataset/lfw_face_processed.csv) Please ensure to plot and check if these faces are correct.
+4. create a config file in train/configs. you can change the parameters as you require.
+5. edit the config file name in train/runs.sh.
+6. start training by navigating to train/ , followed by ./runs.sh. You may need to do chmod +x runs.sh first
+   - in terminal do:
+   - cd train
+   - chmod +x runs.sh
+   - ./runs.sh
+7. check results in evaluate/ . Open evaluate_model.ipynb to check your model results inclusive of linear classifier head and check_embeddings_similarity_score.ipynb to check similarity scores for embeddings of image output vectors.
+8. strip the last layer from the trained model and convert to tflite using evaluate/pytorch2tflite.py
+9. to use the tflite model in the Android app, add this model to the assets/ folder in the app and change the embedding dim in ScannerActivity.kt and CheckRecords.kt to 512.
 
 
 This diagram is a high level summary of the training pipeline and how the model is used in an Android app for real-time facial recognition. First, as a data preprocessing step, all images are passed through the MTCNN face detector to get the boundings boxes of the faces. These faces are then cropped using the generated bounding boxes. Next for training, an InceptionResnetV1 model is initialised. An additional linear classifier is added to the model as the classifier head for training. The classifier output number of neurons is equal to the number of unique persons in the dataset. As such the output num_classes is set dynamically. It is inferred from the dataset only during training. The dataset should contain a substantial number of images for each individual (>=20) to get good results. The model learns by standard multi-class image classification technique. With the classifier head, the model learns just like a normal multi-class classification model, except the number of classes are exactly equal to number of unique individuals in the dataset (typical tasks usually have preset number of classes, e.g. cats-vs-dogs or fashion-products). 
