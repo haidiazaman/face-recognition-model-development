@@ -1,7 +1,11 @@
 # face-recognition-model-development
 Model development part of interview project
-
 download the dataset from https://www.kaggle.com/datasets/atulanandjha/lfwpeople
+
+
+How to train the model?
+1. clone repo
+2. fe
 
 
 This diagram is a high level summary of the training pipeline and how the model is used in an Android app for real-time facial recognition. First, as a data preprocessing step, all images are passed through the MTCNN face detector to get the boundings boxes of the faces. These faces are then cropped using the generated bounding boxes. Next for training, an InceptionResnetV1 model is initialised. An additional linear classifier is added to the model as the classifier head for training. The classifier output number of neurons is equal to the number of unique persons in the dataset. As such the output num_classes is set dynamically. It is inferred from the dataset only during training. The dataset should contain a substantial number of images for each individual (>=20) to get good results. The model learns by standard multi-class image classification technique. With the classifier head, the model learns just like a normal multi-class classification model, except the number of classes are exactly equal to number of unique individuals in the dataset (typical tasks usually have preset number of classes, e.g. cats-vs-dogs or fashion-products). 
