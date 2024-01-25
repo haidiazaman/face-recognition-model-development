@@ -1,6 +1,6 @@
 dataset
 haidi-images
-train/result
+train/result/v1.0.0/weights/best_model.pt
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,jupyternotebooks

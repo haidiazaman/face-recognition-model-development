@@ -23,18 +23,6 @@ import time
 # from torch.utils.tensorboard import Writer
 # os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-
-# def plot_result(result_list, path = './result/fig_train_2step.pdf'):
-#     x = range(0, len(result_list[0]))
-#     plt.switch_backend('agg')
-#     for y, c, l in zip(result_list, ['blue', 'red', 'black'], ['open', 'close', 'block']):
-#         plt.plot(x, y, color = c, marker = '.', label = l)
-#     plt.ylim(0.8, 1)
-#     plt.legend()
-#     plt.grid()
-#     plt.savefig(path)
-#     plt.close()
-
 def setup_seed(seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
@@ -228,12 +216,10 @@ def train_model(args):
         output_df.loc[epoch,'val_acc']=round(epoch_ave_val_acc,2)
         output_df.loc[epoch,'train_time_taken']=round(train_time_taken,2)
         output_df.loc[epoch,'val_time_taken']=round(val_time_taken,2)
-
-        # output_df.loc[epoch,'val_acc_real']=round(val_acc_per_class_dict['real'],2)
-        # output_df.loc[epoch,'val_acc_deepfake']=round(val_acc_per_class_dict['deepfake'],2)
-        # for x in val_conf_matrix.ravel().tolist():
-        #     output_df.loc[epoch,'val_conf_mat'].append(x) 
+        lrs_df.loc[epoch,'lr'] = scheduler.get_lr()[0]        
+        
         output_df.to_csv(output_df_path,index=False)
+        lrs_df.to_csv(lrs_path,index=False)
 
 
         # # TENSORBOARD - plot graphs

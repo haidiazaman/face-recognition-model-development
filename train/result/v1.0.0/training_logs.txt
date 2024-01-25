@@ -1,0 +1,245 @@
+num_classes:  902
+######################
+######################
+### START TRAINING ###
+
+|████████████████████| 168/168 [100%] in 5:09.3 (0.54/s) 
+|████████████████████| 42/42 [100%] in 20.5s (2.04/s) 
+
+Epoch 0, Training loss: 6.8522, Training acc: 0.5809, Validation loss: 6.7263, Validation acc: 3.3530
+|████████████████████| 168/168 [100%] in 5:04.9 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.5s (2.03/s) 
+
+Epoch 1, Training loss: 6.7672, Training acc: 5.3099, Validation loss: 6.3288, Validation acc: 7.1501
+|████████████████████| 168/168 [100%] in 5:04.2 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.05/s) 
+
+Epoch 2, Training loss: 6.8573, Training acc: 5.8637, Validation loss: 7.7922, Validation acc: 7.0733
+|████████████████████| 168/168 [100%] in 5:03.8 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.05/s) 
+
+Epoch 3, Training loss: 6.6058, Training acc: 6.3287, Validation loss: 6.1387, Validation acc: 7.1501
+|████████████████████| 168/168 [100%] in 5:03.2 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.07/s) 
+
+Epoch 4, Training loss: 6.1158, Training acc: 6.5133, Validation loss: 5.7304, Validation acc: 7.9661
+|████████████████████| 168/168 [100%] in 5:03.9 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 5, Training loss: 5.8315, Training acc: 6.9282, Validation loss: 9.1288, Validation acc: 1.9345
+|████████████████████| 168/168 [100%] in 5:04.5 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.06/s) 
+
+Epoch 6, Training loss: 5.6474, Training acc: 7.5750, Validation loss: 5.5933, Validation acc: 8.6358
+|████████████████████| 168/168 [100%] in 5:04.2 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 7, Training loss: 5.5177, Training acc: 8.4263, Validation loss: 5.6517, Validation acc: 8.0405
+|████████████████████| 168/168 [100%] in 5:04.4 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.5s (2.03/s) 
+
+Epoch 8, Training loss: 5.3137, Training acc: 9.8257, Validation loss: 5.6766, Validation acc: 8.4149
+|████████████████████| 168/168 [100%] in 5:04.6 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.6s (2.04/s) 
+
+Epoch 9, Training loss: 5.0277, Training acc: 12.1552, Validation loss: 4.8796, Validation acc: 13.6257
+|████████████████████| 168/168 [100%] in 5:05.4 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 10, Training loss: 4.7655, Training acc: 14.2242, Validation loss: 5.0122, Validation acc: 12.9584
+|████████████████████| 168/168 [100%] in 5:05.4 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.5s (2.03/s) 
+
+Epoch 11, Training loss: 4.4421, Training acc: 16.5164, Validation loss: 4.5570, Validation acc: 19.0716
+|████████████████████| 168/168 [100%] in 5:04.8 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.6s (2.04/s) 
+
+Epoch 12, Training loss: 4.1492, Training acc: 19.3853, Validation loss: 4.3900, Validation acc: 19.5925
+|████████████████████| 168/168 [100%] in 5:05.4 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 13, Training loss: 3.8711, Training acc: 22.4216, Validation loss: 4.0872, Validation acc: 22.9383
+|████████████████████| 168/168 [100%] in 5:05.0 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.6s (2.04/s) 
+
+Epoch 14, Training loss: 3.6669, Training acc: 23.8854, Validation loss: 3.8876, Validation acc: 26.1401
+|████████████████████| 168/168 [100%] in 5:05.1 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.6s (2.04/s) 
+
+Epoch 15, Training loss: 3.5694, Training acc: 25.1145, Validation loss: 3.8690, Validation acc: 27.3305
+|████████████████████| 168/168 [100%] in 5:05.2 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.6s (2.04/s) 
+
+Epoch 16, Training loss: 3.7152, Training acc: 23.9984, Validation loss: 3.8566, Validation acc: 25.7704
+|████████████████████| 168/168 [100%] in 5:05.1 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.06/s) 
+
+Epoch 17, Training loss: 3.7966, Training acc: 22.5976, Validation loss: 3.9618, Validation acc: 24.1287
+|████████████████████| 168/168 [100%] in 5:05.1 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.5s (2.03/s) 
+
+Epoch 18, Training loss: 3.8244, Training acc: 22.5747, Validation loss: 4.3335, Validation acc: 20.1877
+|████████████████████| 168/168 [100%] in 5:05.1 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.07/s) 
+
+Epoch 19, Training loss: 3.8452, Training acc: 21.8178, Validation loss: 3.9590, Validation acc: 23.4615
+|████████████████████| 168/168 [100%] in 5:04.5 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.6s (2.04/s) 
+
+Epoch 20, Training loss: 3.7212, Training acc: 23.6350, Validation loss: 3.8798, Validation acc: 26.5913
+|████████████████████| 168/168 [100%] in 5:03.9 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.5s (2.05/s) 
+
+Epoch 21, Training loss: 3.4684, Training acc: 26.2806, Validation loss: 3.7475, Validation acc: 26.9609
+|████████████████████| 168/168 [100%] in 5:04.7 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 22, Training loss: 3.1876, Training acc: 29.0522, Validation loss: 3.8759, Validation acc: 25.3936
+|████████████████████| 168/168 [100%] in 5:04.4 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.06/s) 
+
+Epoch 23, Training loss: 3.0018, Training acc: 31.3502, Validation loss: 4.1682, Validation acc: 21.5990
+|████████████████████| 168/168 [100%] in 5:04.0 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.06/s) 
+
+Epoch 24, Training loss: 2.7443, Training acc: 33.6939, Validation loss: 3.3232, Validation acc: 33.4461
+|████████████████████| 168/168 [100%] in 5:04.4 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.06/s) 
+
+Epoch 25, Training loss: 2.5558, Training acc: 36.1450, Validation loss: 3.0866, Validation acc: 33.5085
+|████████████████████| 168/168 [100%] in 5:03.2 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.06/s) 
+
+Epoch 26, Training loss: 2.3668, Training acc: 40.2473, Validation loss: 2.9846, Validation acc: 34.9174
+|████████████████████| 168/168 [100%] in 5:03.9 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 27, Training loss: 2.2356, Training acc: 41.9142, Validation loss: 2.7370, Validation acc: 41.2586
+|████████████████████| 168/168 [100%] in 5:03.9 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.05/s) 
+
+Epoch 28, Training loss: 2.0435, Training acc: 44.5227, Validation loss: 2.9446, Validation acc: 39.3121
+|████████████████████| 168/168 [100%] in 5:03.3 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.05/s) 
+
+Epoch 29, Training loss: 1.9160, Training acc: 46.8106, Validation loss: 2.5411, Validation acc: 43.4164
+|████████████████████| 168/168 [100%] in 5:03.6 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.2s (2.06/s) 
+
+Epoch 30, Training loss: 1.7761, Training acc: 49.5507, Validation loss: 3.6115, Validation acc: 28.0002
+|████████████████████| 168/168 [100%] in 5:03.1 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 31, Training loss: 1.6278, Training acc: 51.6312, Validation loss: 2.8279, Validation acc: 37.7544
+|████████████████████| 168/168 [100%] in 5:03.2 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.5s (2.05/s) 
+
+Epoch 32, Training loss: 1.4584, Training acc: 55.5246, Validation loss: 2.3683, Validation acc: 46.4646
+|████████████████████| 168/168 [100%] in 5:03.2 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.06/s) 
+
+Epoch 33, Training loss: 1.4174, Training acc: 55.9896, Validation loss: 2.4128, Validation acc: 45.9461
+|████████████████████| 168/168 [100%] in 5:03.4 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.1s (2.07/s) 
+
+Epoch 34, Training loss: 1.2277, Training acc: 60.8288, Validation loss: 2.5140, Validation acc: 44.6765
+|████████████████████| 168/168 [100%] in 5:03.3 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 35, Training loss: 1.1576, Training acc: 61.9763, Validation loss: 2.2402, Validation acc: 49.1431
+|████████████████████| 168/168 [100%] in 5:02.7 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.5s (2.05/s) 
+
+Epoch 36, Training loss: 1.0242, Training acc: 65.8740, Validation loss: 2.9194, Validation acc: 41.2490
+|████████████████████| 168/168 [100%] in 5:03.1 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.05/s) 
+
+Epoch 37, Training loss: 0.9362, Training acc: 67.8786, Validation loss: 2.4269, Validation acc: 46.9134
+|████████████████████| 168/168 [100%] in 5:02.9 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.5s (2.05/s) 
+
+Epoch 38, Training loss: 0.8492, Training acc: 70.4127, Validation loss: 2.0234, Validation acc: 53.3122
+|████████████████████| 168/168 [100%] in 5:02.2 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 39, Training loss: 0.7522, Training acc: 72.7521, Validation loss: 1.9930, Validation acc: 55.0955
+|████████████████████| 168/168 [100%] in 5:02.7 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.1s (2.07/s) 
+
+Epoch 40, Training loss: 0.6831, Training acc: 74.6180, Validation loss: 2.0893, Validation acc: 54.5003
+|████████████████████| 168/168 [100%] in 5:02.8 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.07/s) 
+
+Epoch 41, Training loss: 0.6461, Training acc: 75.3706, Validation loss: 1.8916, Validation acc: 57.8557
+|████████████████████| 168/168 [100%] in 5:02.5 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.5s (2.03/s) 
+
+Epoch 42, Training loss: 0.5419, Training acc: 78.7188, Validation loss: 2.5527, Validation acc: 48.2455
+|████████████████████| 168/168 [100%] in 5:02.1 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.06/s) 
+
+Epoch 43, Training loss: 0.4816, Training acc: 80.9023, Validation loss: 1.9315, Validation acc: 57.1837
+|████████████████████| 168/168 [100%] in 5:02.2 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.06/s) 
+
+Epoch 44, Training loss: 0.4338, Training acc: 82.3575, Validation loss: 1.9295, Validation acc: 59.3462
+|████████████████████| 168/168 [100%] in 5:02.4 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.07/s) 
+
+Epoch 46, Training loss: 0.3460, Training acc: 84.8500, Validation loss: 1.8501, Validation acc: 60.3111
+|████████████████████| 168/168 [100%] in 5:02.1 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 47, Training loss: 0.3032, Training acc: 87.1895, Validation loss: 1.8076, Validation acc: 60.6855
+|████████████████████| 168/168 [100%] in 5:02.6 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 48, Training loss: 0.2672, Training acc: 88.4816, Validation loss: 1.8785, Validation acc: 60.0926
+|████████████████████| 168/168 [100%] in 5:02.2 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.07/s) 
+
+Epoch 49, Training loss: 0.2495, Training acc: 88.9609, Validation loss: 1.7561, Validation acc: 61.9528
+|████████████████████| 168/168 [100%] in 5:02.2 (0.56/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 50, Training loss: 0.2149, Training acc: 90.0956, Validation loss: 1.7972, Validation acc: 62.0272
+|████████████████████| 168/168 [100%] in 5:02.1 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.1s (2.07/s) 
+
+Epoch 51, Training loss: 0.1923, Training acc: 90.8539, Validation loss: 1.7386, Validation acc: 62.7712
+|████████████████████| 168/168 [100%] in 5:02.2 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 52, Training loss: 0.1817, Training acc: 91.6538, Validation loss: 1.7617, Validation acc: 62.9920
+|████████████████████| 168/168 [100%] in 5:02.3 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.4s (2.04/s) 
+
+Epoch 53, Training loss: 0.1623, Training acc: 92.4064, Validation loss: 1.7271, Validation acc: 63.8849
+|████████████████████| 168/168 [100%] in 5:02.3 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.06/s) 
+
+Epoch 54, Training loss: 0.1396, Training acc: 93.3365, Validation loss: 1.7234, Validation acc: 63.6617
+|████████████████████| 168/168 [100%] in 5:02.2 (0.56/s) 
+|████████████████████| 42/42 [100%] in 20.2s (2.06/s) 
+
+Epoch 55, Training loss: 0.1407, Training acc: 93.4581, Validation loss: 1.7347, Validation acc: 63.6641
+|████████████████████| 168/168 [100%] in 5:01.9 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.2s (2.06/s) 
+
+Epoch 56, Training loss: 0.1264, Training acc: 94.1692, Validation loss: 1.7055, Validation acc: 64.4081
+|████████████████████| 168/168 [100%] in 5:02.0 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.1s (2.07/s) 
+
+Epoch 57, Training loss: 0.1258, Training acc: 94.4955, Validation loss: 1.6849, Validation acc: 65.0778
+|████████████████████| 168/168 [100%] in 5:01.9 (0.56/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.07/s) 
+
+Epoch 58, Training loss: 0.1258, Training acc: 93.8344, Validation loss: 1.7013, Validation acc: 64.9290
+|████████████████████| 168/168 [100%] in 5:02.4 (0.55/s) 
+|████████████████████| 42/42 [100%] in 20.3s (2.05/s) 
+
+Epoch 59, Training loss: 0.1248, Training acc: 93.8344, Validation loss: 1.7013, Validation acc: 65.4498
+
+
+### COMPLETED TRAINING ###
+total time taken: 5h, 24m, 35s
