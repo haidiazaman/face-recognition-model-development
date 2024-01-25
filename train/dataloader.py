@@ -1,7 +1,7 @@
 import torch
 import os
 import cv2
-cv2.setNumThreads(0)
+# cv2.setNumThreads(0)
 from torch.utils.data import Dataset
 import numpy as np
 import pandas as pd
@@ -15,92 +15,38 @@ import imgaug as ia
 import imgaug.augmenters as iaa
 from tqdm.contrib.concurrent import process_map
 import albumentations as A
+import pickle
 
 
-class Eye_Dataset(Dataset):
-    def __init__(self, path, data_type = '', input_dim = 80 ,seed = None, balance = False, augmentation = False, preload = False):
-        eye_labels = np.array(['open', 'close', 'block'])
-        eye_glasses = np.array([0,1])
+class LFW_Dataset(Dataset):
+    def __init__(self, csv_path, label_int_mapping_path, split_type = '', input_dim = 512 ,seed = None, augmentation = False, preload = False):        
+        self.split_type = split_type
+        self.input_dim = input_dim
+        self.augmentation = augmentation
+        self.preload = preload
         
+        self.label_mapping = self.load_dict_from_pickle(label_int_mapping_path)
+        self.df=pd.read_csv(csv_path)
+        if split_type:
+            self.df = self.df[self.df['split_type'] == split_type].reset_index()      
         if seed: self.setup_seed(seed)
         
+        # setup input transform applicable to all images
         self.input_transform = Compose([
             ToTensor(),
         ])
-        self.augmentation = augmentation
-        self.aug_rate = 0.25
-        self.preload = preload
-        self.input_dim = input_dim
         
-        self.df=pd.read_csv(path)
-        # if csv_type == 'str':
-        #     self.df = pd.concat([pd.read_csv(path) for path in csv], ignore_index = True)
-        # elif csv_type == 'dataframe':
-        #     self.df = pd.concat(csv, ignore_index = True)
-            
-        if data_type:
-            self.df = self.df[self.df['split_type'] == data_type].reset_index()
-        
-        # print('######################')
-        # print('BEFORE BALANCING')
-        # print('len(self.df): ',len(self.df))
-        # print(self.df.source.value_counts()/len(self.df))
-        # print(self.df[['label','glasses']].value_counts())
-        # print('######################')
-        
-        if balance:
-            no_glasses_label=self.df[(self.df.glasses!=0) & (self.df.glasses!=1)]
-            eye_results_num = [[sum((self.df['label'] == l) & (self.df['glasses']==g)) for g in eye_glasses] for l in eye_labels]
-            new_df_data = []
-            for i in range(3):
-                for j in range(2):
-                    if eye_results_num[i][j] != 0:
-                        ratio = np.max(eye_results_num) / eye_results_num[i][j]
-                        ratio = max(round(ratio), 1)
-                        for _ in range(ratio):
-                            new_df_data.append(self.df[(self.df['label'] == eye_labels[i]) & (self.df['glasses'] == eye_glasses[j])])
-            self.df = pd.concat(new_df_data, ignore_index = True)
-            self.df = pd.concat([self.df,no_glasses_label], ignore_index = True)        
-        # print()
-        # print('######################')
-        # print('AFTER BALANCING')
-        # print('len(self.df): ',len(self.df))
-        # print(self.df.source.value_counts()/len(self.df))
-        # print(self.df[['label','glasses']].value_counts())
-        # print(self.df['label'].value_counts())
-        # print('######################')
-#         if balance:
-#             eye_results_num = [sum(self.df['label'] == l) for l in eye_results]
-#             new_df_data = []
-#             for i in range(3):
-#                 if eye_results_num[i] != 0:
-#                         ratio = eye_results_num[0] / eye_results_num[i]
-#                         ratio = max(round(ratio), 1)
-#                         for _ in range(ratio):
-#                             new_df_data.append(self.df[self.df['label'] == eye_results[i]])
-            
-#             self.df = pd.concat(new_df_data, ignore_index = True)
-            
-            
-        # data = []
-#         bbox = []
-#         for i in range(len(self.df)):
-#             row = self.df.iloc[i]
-#             data.append(row)
-#             bbox.append(row['left_box'])
-#             data.append(row)
-#             bbox.append(row['right_box'])
-#         self.df = pd.DataFrame(data)
-#         self.df['bbox'] = bbox
-        
-        
+        # uncomment for sanity check
+        # self.df = self.df.drop_duplicates(subset='person_name', keep='first')
+
         # self.df=self.df.iloc[:100]
         # self.df=self.df.iloc[:1000]
         
         self.image_list = np.array(self.df['image_path'])
         self.bbox_list = np.round(np.array([list(map(float, b.strip('[ ]').split(', '))) if len(b) > 2 else eval(b)
                                             for b in list(self.df['bbox'])])).astype(int)
-        self.label_list = np.array([np.where(eye_labels == l)[0][0] for l in self.df['label']])
+        self.label_list = np.array(self.df['label'].tolist())
+        self.class_weights = (1 - self.df.label.value_counts()/len(self.df)).tolist()
         
         if self.preload:
             self.image_preload = []
@@ -112,21 +58,12 @@ class Eye_Dataset(Dataset):
                     'bbox': self.bbox_list[index],
                     'input_dim': self.input_dim
                 })
-            self.image_preload = process_map(load_image, input_params, max_workers=30, chunksize=1)
+            self.image_preload = process_map(self.load_image, input_params, max_workers=30, chunksize=1)
         self.length = len(self.image_list)
         
-        
-        self.label_indices=[[],[],[]]
-        for index in range(len(self.image_list)):
-            if self.label_list[index]==0:
-                self.label_indices[0].append(index)
-            elif self.label_list[index]==1:
-                self.label_indices[1].append(index)
-            elif self.label_list[index]==2:
-                self.label_indices[2].append(index)
             
     def __len__(self):
-        return self.length
+        return len(self.df)
 
     def __getitem__(self,ind):
         image_path=self.image_list[ind]
@@ -140,7 +77,7 @@ class Eye_Dataset(Dataset):
                 'bbox': bbox,
                 'input_dim':self.input_dim
             }
-            image=load_image(input_params)
+            image=self.load_image(input_params)
         if self.augmentation:
             image=self.apply_augmentations(image)
         image=self.apply_input_transforms(image) #applies to all split type, train val test
@@ -192,50 +129,6 @@ class Eye_Dataset(Dataset):
         augmented_image = augmented['image']
         return augmented_image
     
-
-    
-#     def __getitem__(self, index):
-#         # 0 image, 1 label
-#         if self.preload:
-#             image = self.image_preload[index]
-#         else:
-#             image = load_image({
-#                 'path': self.image_list[index], 
-#                 'bbox': self.bbox_list[index],
-#                 'input_dim': self.input_dim
-#             })
-        
-#         if self.augmentation:
-#             if random.random() < self.aug_rate:
-#                 aug_gaussian_noise = iaa.AdditiveGaussianNoise(scale=(0, 0.01*255))
-#                 image = aug_gaussian_noise(image = image)
-            
-#             if random.random() < self.aug_rate:
-#                 aug_laplace_noise = iaa.AdditiveLaplaceNoise(scale=(0, 0.01*255))
-#                 image = aug_laplace_noise(image = image)
-            
-#             if random.random() < self.aug_rate:
-#                 aug_compression = iaa.JpegCompression(compression=(0, 10))
-#                 image = aug_compression(image = image)
-            
-#             if random.random() < self.aug_rate:
-#                 aug_perspective = iaa.PerspectiveTransform(scale=(0, 0.01))
-#                 image = aug_perspective(image = image)
-            
-#             aug_flip = iaa.Fliplr(0.5)
-#             image = aug_flip(image = image)
-            
-#             if random.random() < self.aug_rate:
-#                 aug_shift_rotate = iaa.Affine(translate_px = {"x": (-22, 22), "y": (-22, 22)}, 
-#                                               rotate = (-10, 10), 
-#                                               mode = ia.ALL, 
-#                                               cval = (0, 255))
-#                 image = aug_shift_rotate(image = image)
-        
-#         image = self.input_transform(np.array(image, np.float32) / 255)
-#         label = self.label_list[index]
-#         return image, label
-    
     
     def setup_seed(self, seed):
         torch.manual_seed(seed)
@@ -245,13 +138,18 @@ class Eye_Dataset(Dataset):
         torch.backends.cudnn.deterministic = True
 
 
-def load_image(input_param):
-    expend_ratio = 0
-    image = cv2.cvtColor(cv2.imread(input_param['path']), cv2.COLOR_BGR2RGB)
-    l, t, r, b = input_param['bbox']
-    w, h = r - l, b - t
-    l, r = max(0, l - int(expend_ratio * w / 2)), min(image.shape[1] - 1, r + int(expend_ratio * w / 2))
-    t, b = max(0, t - int(expend_ratio * h / 2)), min(image.shape[0] - 1, b + int(expend_ratio * h / 2))
-    input_dim = input_param['input_dim']
-    image = cv2.resize(image[t:b, l:r], (input_dim, input_dim))
-    return image
+    def load_image(self,input_param):
+        expand_ratio = 0
+        image = cv2.cvtColor(cv2.imread(input_param['image_path']), cv2.COLOR_BGR2RGB)
+        l, t, r, b = input_param['bbox']
+        w, h = r - l, b - t
+        l, r = max(0, l - int(expand_ratio * w / 2)), min(image.shape[1] - 1, r + int(expand_ratio * w / 2))
+        t, b = max(0, t - int(expand_ratio * h / 2)), min(image.shape[0] - 1, b + int(expand_ratio * h / 2))
+        input_dim = input_param['input_dim']
+        image = cv2.resize(image[t:b, l:r], (input_dim, input_dim))
+        return image
+
+    def load_dict_from_pickle(self,file_path):
+        with open(file_path, 'rb') as file:
+            loaded_dict = pickle.load(file)
+        return loaded_dict 
