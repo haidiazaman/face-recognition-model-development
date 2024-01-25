@@ -13,6 +13,9 @@ if load_model:
     model.load_state_dict(torch.load(os.path.join('./result', load_model), map_location = device))
     _ = model.eval()
     
+# strip the last classifier layer here to use the only the 512-embeddings layer
+# code
+    
 # Set  input shape of the model
 input_shape = (1, 3, 512, 512)
 
